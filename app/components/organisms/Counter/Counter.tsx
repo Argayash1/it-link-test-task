@@ -1,13 +1,17 @@
 'use client';
 
-import { ReactElement, useState } from 'react';
+import { ReactElement } from 'react';
 import { Button, ButtonType } from '../../atoms/Button/Button';
 import styles from './Counter.module.css';
 import { ButtonText } from '../../molecules/ButtonText/ButtonText';
 import useCounter from '@/app/hooks/useCounter';
 
-export const Counter = (): ReactElement => {
-  const { count, increment, decrement } = useCounter();
+interface ICounter {
+  initialCount?: number;
+}
+
+export const Counter = ({ initialCount = 0 }: ICounter): ReactElement => {
+  const { count, increment, decrement } = useCounter(initialCount);
 
   return (
     <div className={styles.counter}>
