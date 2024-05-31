@@ -1,25 +1,21 @@
-import Button from '../../atoms/Button/Button';
-import Text, { IText } from '../../atoms/Text/Text';
+import { Button, IButton } from '../../atoms/Button/Button';
+import { Text, IText } from '../../atoms/Text/Text';
 
-interface IButtonText extends IText {
-  increaseCounter: () => void;
-  decreaseCounter: () => void;
-  buttonTextDecrease: string;
-  buttonTextIncrease: string;
-}
+interface IButtonText extends IText, IButton {}
 
-export default function ButtonText({
-  increaseCounter,
-  decreaseCounter,
-  buttonTextDecrease,
-  buttonTextIncrease,
+export const ButtonText = ({
+  buttonText,
+  onClick,
   text,
-}: IButtonText) {
+  textClassName,
+  textStyle,
+  buttonClassName,
+  buttonStyle,
+}: IButtonText) => {
   return (
     <>
-      <Text text={text} />
-      <Button buttonText={buttonTextDecrease} onClick={increaseCounter} />
-      <Button buttonText={buttonTextIncrease} onClick={decreaseCounter} />
+      <Text text={text} textClassName={textClassName} textStyle={textStyle} />
+      <Button buttonText={buttonText} onClick={onClick} buttonClassName={buttonClassName} buttonStyle={buttonStyle} />
     </>
   );
-}
+};

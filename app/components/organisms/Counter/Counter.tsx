@@ -1,20 +1,16 @@
 import { useState } from 'react';
-import ButtonText from '../../molecules/ButtonText/ButtinText';
+import { ButtonText } from '../../molecules/ButtonText/ButtinText';
+import { Button } from '../../atoms/Button/Button';
 
-export default function Counter() {
+export const Counter = () => {
   const [index, setIndex] = useState(0);
   const increment = () => setIndex(index + 1);
   const decrement = () => setIndex(index - 1);
 
   return (
-    <>
-      <ButtonText
-        text={index}
-        buttonTextIncrease='increment'
-        buttonTextDecrease='decrement'
-        increaseCounter={increment}
-        decreaseCounter={decrement}
-      />
-    </>
+    <div>
+      <ButtonText text={index} buttonText='increment' onClick={increment} />
+      <Button onClick={decrement} buttonText='decrement' />
+    </div>
   );
-}
+};
